@@ -1,0 +1,43 @@
+group 'com.thoughtworks'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+//This will force the tests to always execute by clearing out the test cache
+test.dependsOn 'cleanTest'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.google.inject', name: 'guice', version: '4.1.0' // for reportng working
+    compile group: 'com.beust', name: 'jcommander', version: '1.69'     //for testng working
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'     // for screenshot file
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.4'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.8.1'
+    testCompile group: 'org.testng', name: 'testng', version: '6.13'
+    testCompile group: 'org.uncommons', name: 'reportng', version: '1.1.4'
+    testCompile group: 'com.github.tomakehurst', name: 'wiremock-standalone', version: '2.16.0'
+    testCompile group: 'junit', name: 'junit', version: '4.10'
+}
+
+test {
+    // useTestNG()  If not using testng.xml
+    useTestNG() {    // If using testng.xml to run specific tests
+        suites(file('testng.xml'));
+    }
+//    systemProperty "Browser", System.getProperty("Browser")
+//    maxParallelForks = 3
+//
+//    beforeTest { descriptor ->    //
+//        logger.lifecycle("Running test: " + descriptor)
+//    }
+//    onOutput { descriptor, event ->
+//        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+//    }
+    // reports.html.enabled = false   Not to generate html
+    // includeGroups 'group1'       only run tests that belong to specific group
+}

@@ -1,0 +1,15 @@
+-- Project introduction
+1 It is about selenium automation:
+  1.1 headless demo
+  1.2 Wiremock demo(API)
+  1.3 Mockito demo(unit testing)
+
+2 It is project based on Idea using Java8 + Gradle building tool
+
+
+-- Env
+1 Java 8 is installed
+2 Download wiremock jar
+http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.1.10/wiremock-standalone-2.1.10.jar
+3 Run wiremock as standalone process(http://wiremock.org/docs/running-standalone/)
+java -jar wiremock-2.1.10-standalone.jar –port 9999 —verbose
